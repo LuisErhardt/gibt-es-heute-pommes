@@ -1,0 +1,25 @@
+{
+  "name": "gibt-es-heute-pommes",
+  "version": "1.0.0",
+  "description": "Check if the Mensa in Duisburg serves fries today.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsx src/index.ts"
+  },
+  "keywords": [],
+  "author": "Luis Erhardt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuisErhardt/gibt-es-heute-pommes.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "puppeteer": "^24.17.1"
+  }
+}
