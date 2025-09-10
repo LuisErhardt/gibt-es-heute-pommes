@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/write-build-info.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
