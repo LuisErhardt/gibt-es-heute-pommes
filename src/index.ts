@@ -25,7 +25,7 @@ async function pommmesInMenu() {
 
 function writeResultToFile(found: boolean) {
   const text = found ? "Ja" : "Nein";
-  writeFileSync("result.txt", text, { encoding: "utf-8" });
+  writeFileSync("public/result.txt", text, { encoding: "utf-8" });
   console.log("Pommes gefunden: " + text);
   console.log("Textdatei geschrieben");
 }
