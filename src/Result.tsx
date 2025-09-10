@@ -25,7 +25,15 @@ const Result: React.FC = () => {
   if (error) {
     return <div className="text-red-500 font-bold">{error}</div>;
   }
-  return <div className="text-8xl font-bold w-fit bg-white p-10 border-5 border-blue-500 rounded-md">{text}!</div>;
+  return (
+    <div
+      className={`${
+        text === "Ja" ? "border-green-500 " : "border-red-600"
+      } text-8xl font-bold w-fit bg-white p-10 border-4  rounded-md`}
+    >
+      {text}!
+    </div>
+  );
 };
 
 export default Result;
