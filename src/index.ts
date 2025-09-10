@@ -3,7 +3,7 @@ import { delay } from "./util.js";
 import { writeFileSync } from "fs";
 
 async function pommmesInMenu() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox", "--disable-setuid-sandbox"] });
   try {
     const page = await browser.newPage();
     console.log("Browser started");
