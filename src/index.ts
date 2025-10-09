@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer";
 import { delay } from "./util.js";
 import { writeFileSync } from "fs";
+import { createPost } from "./api.js";
 
 async function pommmesInMenu() {
   const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox", "--disable-setuid-sandbox"] });
@@ -33,6 +34,7 @@ function writeResultToFile(found: boolean) {
 try {
   const pommesFound = await pommmesInMenu();
   writeResultToFile(pommesFound);
+  await createPost(pommesFound ? "Ja" : "Nein");
 } catch (error) {
   console.error(error);
   process.exit(1);
