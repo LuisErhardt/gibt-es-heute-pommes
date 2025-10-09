@@ -17,6 +17,9 @@ env:
 jobs:
   update-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      BLUESKY_HANDLE: ${{vars.BLUESKY_HANDLE}}
+      BLUESKY_APP_PASSWORD: ${{vars.BLUESKY_APP_PASSWORD}}
 
     steps:
       - name: Checkout repository
