@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 import { delay } from "./util.js";
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { createPost } from "./api.js";
 
 async function pommmesInMenu() {
@@ -24,17 +24,24 @@ async function pommmesInMenu() {
   }
 }
 
-function writeResultToFile(found: boolean) {
+async function writeResultToFile(found: boolean) {
+  let days = null;
+  if (!found) {
+    const res = JSON.parse(readFileSync("public/result.json", "utf-8"));
+    days = res.days + 1;
+  }
+
   const text = found ? "Ja" : "Nein";
-  writeFileSync("public/result.txt", text, { encoding: "utf-8" });
-  console.log("Pommes gefunden: " + text);
-  console.log("Textdatei geschrieben");
+  const data = { result: text, days: days };
+  writeFileSync("public/result.json", JSON.stringify(data, null, 2), { encoding: "utf-8" });
+  console.log(data);
+  console.log("JSON geschrieben");
 }
 
 try {
-  const pommesFound = await pommmesInMenu();
-  writeResultToFile(pommesFound);
-  await createPost(pommesFound ? "Ja" : "Nein");
+  // const pommesFound = await pommmesInMenu();
+  await writeResultToFile(true);
+  // await createPost(pommesFound ? "Ja" : "Nein");
 } catch (error) {
   console.error(error);
   process.exit(1);

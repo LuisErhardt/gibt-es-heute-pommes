@@ -2,6 +2,6 @@
 
 body {
   background: center repeat url("/background.svg");
-  background-size: auto;
   background-size: 8rem;
+  background-attachment: fixed;
 }

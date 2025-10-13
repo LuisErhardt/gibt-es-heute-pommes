@@ -1,11 +1,11 @@
 import Footer from "./Footer";
-import Result from "./Result";
+import Interaction from "./Interaction";
 
 function App() {
   return (
     <>
-      <div className="flex justify-center mt-20">
-        <Result />
+      <div className="flex justify-center mt-20 h-full">
+        <Interaction />
       </div>
       <Footer />
     </>

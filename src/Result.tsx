@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from "react";
+import Animation from "./Animation";
 
 const Result: React.FC = () => {
   const [text, setText] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [days, setDays] = useState(null);
+
+  const isWeekend = () => {
+    const today = new Date();
+    const day = today.getDay();
+    return day === 0 || day === 6;
+  };
 
   useEffect(() => {
     const loadFile = async () => {
       try {
-        setLoading(true);
-        const response = await fetch("result.txt");
-        const data = await response.text();
-        if (data.startsWith("<!DOCTYPE html>")) {
-          throw new Error("Datei nicht gefunden (Fallback geladen)");
-        }
-        setLoading(false);
-        setText(data);
+        const response = await fetch("result.json");
+        const data = await response.json();
+        setText(data.result);
+        setDays(data.days);
       } catch (err) {
-        setLoading(false);
         setError("Keine Infos zu Pommes gefunden :(");
         console.error(err);
       }
     };
 
-    loadFile();
+    if (!isWeekend()) loadFile();
   }, []);
+
+  if (isWeekend()) {
+    return (
+      <div className="border-gray-600  text-5xl font-bold w-fit bg-white p-10 border-4 rounded-md text-center">
+        Nein! <br />
+        (Wochenende)
+      </div>
+    );
+  }
 
   if (error) {
     return (
@@ -33,19 +44,7 @@ const Result: React.FC = () => {
       </div>
     );
   }
-
-  if (loading) {
-    return <></>;
-  }
-  return (
-    <div
-      className={`${
-        text === "Ja" ? "border-green-500 " : "border-red-600"
-      } text-8xl font-bold w-fit bg-white p-10 border-4  rounded-md`}
-    >
-      {text}!
-    </div>
-  );
+  return <Animation result={text} days={days} />;
 };
 
 export default Result;
