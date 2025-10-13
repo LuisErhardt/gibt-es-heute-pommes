@@ -39,9 +39,9 @@ async function writeResultToFile(found: boolean) {
 }
 
 try {
-  // const pommesFound = await pommmesInMenu();
+  const pommesFound = await pommmesInMenu();
   await writeResultToFile(true);
-  // await createPost(pommesFound ? "Ja" : "Nein");
+  await createPost(pommesFound ? "Ja" : "Nein");
 } catch (error) {
   console.error(error);
   process.exit(1);
