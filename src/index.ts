@@ -24,7 +24,7 @@ async function pommmesInMenu() {
   }
 }
 
-async function writeResultToFile(found: boolean) {
+async function writeResultToFile(found: boolean): Promise<number | null> {
   let days = null;
   if (!found) {
     const res = JSON.parse(readFileSync("public/result.json", "utf-8"));
@@ -36,12 +36,13 @@ async function writeResultToFile(found: boolean) {
   writeFileSync("public/result.json", JSON.stringify(data, null, 2), { encoding: "utf-8" });
   console.log(data);
   console.log("JSON geschrieben");
+  return days;
 }
 
 try {
   const pommesFound = await pommmesInMenu();
-  await writeResultToFile(pommesFound);
-  await createPost(pommesFound ? "Ja" : "Nein");
+  const days = await writeResultToFile(pommesFound);
+  await createPost(pommesFound ? "Ja" : "Nein!\n" + (days ? `Das ist der ${days}. Tag ohne Pommes in Folge.` : ""));
 } catch (error) {
   console.error(error);
   process.exit(1);

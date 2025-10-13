@@ -23,9 +23,9 @@ function Interaction() {
       ) : (
         <>
           <div className="font-bold">Du willst wissen, ob es heute in der Mensa am Campus Duisburg Pommes gibt?</div>
-          <div className="mt-5">Klicke, um es herausfinden:</div>
           {!loading ? (
             <>
+              <div className="mt-5">Klicke, um es herausfinden:</div>
               <div className="flex justify-center my-5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
