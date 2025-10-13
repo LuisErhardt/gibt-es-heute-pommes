@@ -40,7 +40,7 @@ async function writeResultToFile(found: boolean) {
 
 try {
   const pommesFound = await pommmesInMenu();
-  await writeResultToFile(true);
+  await writeResultToFile(pommesFound);
   await createPost(pommesFound ? "Ja" : "Nein");
 } catch (error) {
   console.error(error);
