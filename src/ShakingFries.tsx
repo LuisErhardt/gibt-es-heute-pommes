@@ -1,17 +1,15 @@
-import { stagger, useAnimate, animate } from "framer-motion";
+import { stagger, useAnimate } from "framer-motion";
 
 const randomNumberBetween = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
-
-type AnimationSequence = Parameters<typeof animate>[0];
 
 function ShakingFries() {
   const [scope, animate] = useAnimate();
 
   const onButtonClick = () => {
     const sparkles = Array.from({ length: 20 });
-    const sparklesAnimation: AnimationSequence = sparkles.map((_, index) => [
+    const sparklesAnimation: any = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
         x: randomNumberBetween(-100, 100),
@@ -25,7 +23,7 @@ function ShakingFries() {
       },
     ]);
 
-    const sparklesFadeOut: AnimationSequence = sparkles.map((_, index) => [
+    const sparklesFadeOut: any = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
         opacity: 0,
@@ -37,7 +35,7 @@ function ShakingFries() {
       },
     ]);
 
-    const sparklesReset: AnimationSequence = sparkles.map((_, index) => [
+    const sparklesReset: any = sparkles.map((_, index) => [
       `.sparkle-${index}`,
       {
         x: 0,
