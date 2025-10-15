@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 import { delay } from "./util.js";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 import { createPost } from "./api.js";
 
 async function pommmesInMenu() {
@@ -35,13 +35,36 @@ async function writeResultToFile(found: boolean): Promise<number | null> {
   const data = { result: text, days: days };
   writeFileSync("public/result.json", JSON.stringify(data, null, 2), { encoding: "utf-8" });
   console.log(data);
-  console.log("JSON geschrieben");
+  console.log("result.json geschrieben");
   return days;
+}
+
+function archiveResult(found: boolean, path: string) {
+  let data: Record<string, boolean> = {};
+  if (existsSync(path)) {
+    data = JSON.parse(readFileSync(path, "utf-8"));
+  }
+  const today = new Date();
+  if (today.getDay() === 0 || today.getDay() === 6) {
+    console.log("Am Wochenende wird nicht archiviert.");
+    return;
+  }
+
+  const todayAsString = today.toLocaleDateString("de-DE");
+  if (data[todayAsString]) {
+    console.log("Ergebnis für heute schon im Archiv, nichts geändert.");
+    return;
+  }
+
+  data[todayAsString] = found;
+  writeFileSync(path, JSON.stringify(data, null, 2), { encoding: "utf-8" });
+  console.log("archive.json geschrieben");
 }
 
 try {
   const pommesFound = await pommmesInMenu();
   const days = await writeResultToFile(pommesFound);
+  archiveResult(pommesFound, "public/archive.json");
   await createPost(pommesFound ? "Ja" : "Nein!\n" + (days ? `Das ist der ${days}. Tag ohne Pommes in Folge.` : ""));
 } catch (error) {
   console.error(error);
