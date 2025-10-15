@@ -30,19 +30,15 @@ const Result: React.FC = () => {
 
   if (isWeekend()) {
     return (
-      <div className="border-gray-600  text-5xl font-bold w-fit bg-white p-10 border-4 rounded-md text-center">
-        Nein! <br />
-        (Wochenende)
+      <div className="w-fit text-center">
+        <div className="text-8xl font-bold mb-3 text-red-600">Nein!</div>
+        <div className="text-4xl">Am Wochenende hat die Mensa zu.</div>
       </div>
     );
   }
 
   if (error) {
-    return (
-      <div className="text-red-500 border-red-600  text-5xl font-bold w-fit bg-white p-10 border-4 rounded-md">
-        {error}
-      </div>
-    );
+    return <div className="text-red-500 text-5xl font-bold w-fit">{error}</div>;
   }
   return <Animation result={text} days={days} />;
 };
