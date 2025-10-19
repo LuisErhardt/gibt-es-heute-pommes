@@ -22,7 +22,7 @@ function Interaction() {
         </div>
       ) : (
         <>
-          <div className="font-bold">Du willst wissen, ob es heute in der Mensa am Campus Duisburg Pommes gibt?</div>
+          <div className="font-bold">Gibt es heute Pommes in der Mensa am Campus Duisburg?</div>
           {!loading ? (
             <>
               <div className="mt-5">Klicke, um es herausfinden:</div>

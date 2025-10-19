@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { delay } from "./util.js";
+import { delay, isWeekend } from "./util.js";
 import { readFileSync, writeFileSync, existsSync } from "fs";
 import { createPost } from "./api.js";
 
@@ -44,13 +44,8 @@ function archiveResult(found: boolean, path: string) {
   if (existsSync(path)) {
     data = JSON.parse(readFileSync(path, "utf-8"));
   }
-  const today = new Date();
-  if (today.getDay() === 0 || today.getDay() === 6) {
-    console.log("Am Wochenende wird nicht archiviert.");
-    return;
-  }
+  const todayAsString = new Date().toLocaleDateString("de-DE");
 
-  const todayAsString = today.toLocaleDateString("de-DE");
   if (data[todayAsString]) {
     console.log("Ergebnis für heute schon im Archiv, nichts geändert.");
     return;
@@ -62,10 +57,14 @@ function archiveResult(found: boolean, path: string) {
 }
 
 try {
-  const pommesFound = await pommmesInMenu();
-  const days = await writeResultToFile(pommesFound);
-  archiveResult(pommesFound, "public/archive.json");
-  await createPost(pommesFound ? "Ja" : "Nein!\n" + (days ? `Das ist der ${days}. Tag ohne Pommes in Folge.` : ""));
+  if (!isWeekend()) {
+    const pommesFound = await pommmesInMenu();
+    const days = await writeResultToFile(pommesFound);
+    archiveResult(pommesFound, "public/archive.json");
+    await createPost(pommesFound ? "Ja" : "Nein!\n" + (days ? `Das ist der ${days}. Tag ohne Pommes in Folge.` : ""));
+  } else {
+    console.log("Wochenende: Kein Check durchgeführt.");
+  }
 } catch (error) {
   console.error(error);
   process.exit(1);

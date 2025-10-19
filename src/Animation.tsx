@@ -28,7 +28,7 @@ export default function Animation(props: PropsType) {
           </button>
         </div>
       ) : (
-        <div className="text-4xl">Das ist der {props.days}. Tag ohne Pommes in Folge. </div>
+        <div className="text-4xl">Das ist der {props.days}. Tag in Folge ohne Pommes. </div>
       )}
     </motion.div>
   );
