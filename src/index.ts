@@ -57,13 +57,11 @@ function archiveResult(found: boolean, path: string) {
 }
 
 try {
+  const pommesFound = await pommmesInMenu();
+  archiveResult(pommesFound, "public/archive.json");
   if (!isWeekend()) {
-    const pommesFound = await pommmesInMenu();
     const days = await writeResultToFile(pommesFound);
-    archiveResult(pommesFound, "public/archive.json");
     await createPost(pommesFound ? "Ja" : "Nein!\n" + (days ? `Das ist der ${days}. Tag ohne Pommes in Folge.` : ""));
-  } else {
-    console.log("Wochenende: Kein Check durchgeführt.");
   }
 } catch (error) {
   console.error(error);
