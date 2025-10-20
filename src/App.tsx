@@ -1,14 +1,21 @@
 import Footer from "./Footer";
+import Heatmap from "./Heatmap";
 import Interaction from "./Interaction";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div className="flex justify-center mt-20 h-full">
-        <Interaction />
+    <Router>
+      {" "}
+      <div className="mx-auto max-w-xl mt-20 h-full">
+        <Routes>
+          {" "}
+          <Route path="/" element={<Interaction />} />
+          <Route path="/Statistik" element={<Heatmap />} />{" "}
+        </Routes>{" "}
       </div>
       <Footer />
-    </>
+    </Router>
   );
 }
 

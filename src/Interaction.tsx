@@ -52,6 +52,13 @@ function Interaction() {
           )}
         </>
       )}
+      <div className="mt-20 text-sm pt-5 border-t">
+        Schau dir die{" "}
+        <a className="text-blue-500 underline" href="Statistik">
+          Statistik
+        </a>{" "}
+        an
+      </div>
     </div>
   );
 }

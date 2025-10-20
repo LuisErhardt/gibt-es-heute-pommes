@@ -5,3 +5,19 @@ body {
   background-size: 8rem;
   background-attachment: fixed;
 }
+
+.react-calendar-heatmap-month-label,
+.react-calendar-heatmap-weekday-label {
+  fill: black !important;
+}
+
+.react-calendar-heatmap .color-true {
+  fill: rgb(97, 223, 101);
+}
+.react-calendar-heatmap .color-false {
+  fill: #dc4040;
+}
+
+.react-calendar-heatmap .color-weekend {
+  fill: #747474;
+}
