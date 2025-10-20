@@ -44,7 +44,7 @@ function archiveResult(found: boolean, path: string) {
   if (existsSync(path)) {
     data = JSON.parse(readFileSync(path, "utf-8"));
   }
-  const todayAsString = new Date().toLocaleDateString("de-DE");
+  const todayAsString = new Date().toLocaleDateString("en-CA");
 
   if (data[todayAsString]) {
     console.log("Ergebnis für heute schon im Archiv, nichts geändert.");
