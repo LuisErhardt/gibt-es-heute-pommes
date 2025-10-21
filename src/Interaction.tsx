@@ -39,7 +39,7 @@ function Interaction() {
                 </svg>
               </div>
               <button
-                className="mt-3 text-blue-500 underline hover:text-blue-700 hover:cursor-pointer"
+                className="mt-3 ml-5 text-blue-500 underline hover:text-blue-700 hover:cursor-pointer"
                 onClick={() => onClick()}
               >
                 <img src="lupe.png" className="h-20" />
