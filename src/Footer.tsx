@@ -6,6 +6,14 @@ const Footer: React.FC = () => {
       <div className="flex items-center justify-center gap-4">
         <span>Aktualisiert: {BUILD_DATE}</span>
         <a
+          href="https://bsky.app/profile/gibtesheutepommes.bsky.social"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition-opacity pt-1"
+        >
+          <img src="bluesky.svg" alt="Bluesky" className="w-5 h-5" />
+        </a>
+        <a
           href="https://github.com/LuisErhardt/gibt-es-heute-pommes"
           target="_blank"
           rel="noopener noreferrer"
