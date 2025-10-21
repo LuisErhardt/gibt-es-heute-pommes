@@ -23,7 +23,7 @@ function Heatmap() {
   const entries = Object.entries(data);
   const firstDate = new Date(entries[0][0]);
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() + 100);
+  endDate.setDate(endDate.getDate() + 60);
 
   const values = entries.map(([date, hasFries]) => ({
     date,
@@ -31,7 +31,6 @@ function Heatmap() {
   }));
 
   const tooltipContent = (value: any) => {
-    console.log(value);
     if (!value.date) return "Keine Daten";
     if (isWeekend(value.date)) return `${toGermanDate(value.date)}: 🛑 Wochenende`;
     return `${toGermanDate(value.date)}: ${value.count ? "✅ Pommes" : "❌ keine Pommes"}`;

@@ -21,3 +21,8 @@ body {
 .react-calendar-heatmap .color-weekend {
   fill: #747474;
 }
+
+.react-calendar-heatmap-week rect {
+  rx: 50%;
+  ry: 50%;
+}
