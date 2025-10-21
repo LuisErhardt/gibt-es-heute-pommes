@@ -16,7 +16,7 @@ function Interaction() {
   };
 
   return (
-    <div className="border-gray-600 text-2xl max-w-xl w-fit bg-white p-10 border-4 rounded-md text-center mx-4 h-3/4">
+    <div className="border-gray-600 text-2xl bg-white p-10 border-4 rounded-md text-center mx-4 h-3/4">
       {buttonClicked ? (
         <div className="flex justify-center">
           <Result />
