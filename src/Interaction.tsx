@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Result from "./Result";
 import { BarLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 function Interaction() {
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -54,9 +55,9 @@ function Interaction() {
       )}
       <div className="mt-20 text-sm pt-5 border-t">
         Schau dir die{" "}
-        <a className="text-blue-500 underline" href="Statistik">
+        <Link className="text-blue-500 underline" to="Statistik">
           Statistik
-        </a>{" "}
+        </Link>{" "}
         an
       </div>
     </div>
