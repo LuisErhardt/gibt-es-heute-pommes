@@ -9,7 +9,7 @@ async function pommmesInMenu() {
     const page = await browser.newPage();
     console.log("Browser started");
 
-    await page.goto("https://www.stw-edu.de/gastronomie/speiseplaene/mensa-campus-duisburg");
+    await page.goto("https://www.stw-edu.de/gastronomie/speisen/?ort=mensa-campus-duisburg");
     console.log("Page fetched, wait for 4 seconds...");
 
     await delay(4000);
