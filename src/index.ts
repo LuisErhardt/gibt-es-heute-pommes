@@ -14,7 +14,7 @@ async function pommmesInMenu() {
 
     await delay(4000);
 
-    const speiseplanText = await page.$eval("div.speiseplan", (el) => el.textContent || "");
+    const speiseplanText = await page.$eval("#speisen-grid", (el) => el.textContent || "");
 
     console.log("Speiseplan gelesen");
     return speiseplanText.toLowerCase().includes("pommes");
