@@ -25,7 +25,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "dotenv": "^17.2.3",
     "motion": "^12.23.24",
-    "puppeteer": "^24.17.1",
+    "puppeteer": "^25.1.0",
     "react": "^19.1.1",
     "react-calendar-heatmap": "^1.10.0",
     "react-dom": "^19.1.1",
