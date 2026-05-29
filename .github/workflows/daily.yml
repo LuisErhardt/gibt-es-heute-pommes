@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Install Puppeteer browser
-        run: npx puppeteer browsers install chrome --install-deps
+        run: npx @puppeteer/browsers install chrome@stable
 
       - name: Run fries availability script
         run: npm run start
